@@ -1,0 +1,20 @@
+<link rel="stylesheet" type="text/css" href="lib/jqplot-1.0.8/jquery.jqplot.min.css" />
+  
+
+<script language="javascript" type="text/javascript" src="lib/jqplot-1.0.8/jquery.jqplot.min.js"></script>
+<script type="text/javascript" src="lib/jqplot-1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
+<script type="text/javascript" src="lib/jqplot-1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
+<div ng-model='plotdata'>
+<div>
+{{plotdata}}
+</div>
+<div id='timechart'  style="height:400px;width:300px; "></div>
+<div id="plotdatascript">
+	<script>
+		var plotdata = angular.element(document.getElementById('plotdatascript')).scope().plotdata
+		$.jqplot('timechart',[ plotdata ]);
+	</script>
+</div>
+<div><button class="btn btn-large"  ng-click='changeplotdata()'>Update</button>
+</div>
+</div>
