@@ -4,7 +4,7 @@ angular.module('brewzone', ['$strap.directives']).
   	  when('/', {templateUrl: 'partials/home.html'}).
       when('/state', {templateUrl: 'partials/state.html'}).
       when('/history', {templateUrl: 'partials/history.html', controller: BrewzoneController}).
-      when('/settings', {templateUrl: 'partials/settings.html', controller: BrewzoneController}).
+      when('/settings', {templateUrl: 'partials/settings.html'}).
       otherwise({redirectTo: '/'});
 }]).directive('chart', function () {
     return {
@@ -16,9 +16,7 @@ angular.module('brewzone', ['$strap.directives']).
         		}
         
         		scope.$watch(attrs.ngModel, function(newValue, oldValue) {
-        		     if(newValue) {
-        		    	updateChart(newValue);
-        		     }
+        		    updateChart(newValue);
         		});
         	}
     	}
