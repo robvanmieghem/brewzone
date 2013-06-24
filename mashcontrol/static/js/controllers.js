@@ -12,18 +12,18 @@ function BrewzoneController($scope, $http) {
 	}
 	
 
-	$scope.mashdata = [];
+	$scope.mashschemedata = [];
 	
 	$scope.mashscheme = {
 			start : {temperature : 57},
 			beta : {temperature:63, length:30},
 			alpha : {temperature:73, length:30},
-			mashout : {temperature:80}
+			mashout : {temperature:79}
 			
 	}
 
 
-	$scope.updateMashDataFromScheme = function(){
+	$scope.updateMashSchemeDataFromScheme = function(){
 
 		var newValue = $scope.mashscheme;
 		var mashdata = [];
@@ -49,7 +49,7 @@ function BrewzoneController($scope, $http) {
 		temperature = parseFloat(newValue.mashout.temperature);
 		mashdata.push([time,temperature]);
 		
-		$scope.mashdata = mashdata;
+		$scope.mashschemedata = mashdata;
 		
 	}
 	
@@ -57,6 +57,6 @@ function BrewzoneController($scope, $http) {
 		if (!newValue){
 			return;
 		}
-		$scope.updateMashDataFromScheme();
+		$scope.updateMashSchemeDataFromScheme();
 	});
 }

@@ -12,7 +12,20 @@ angular.module('brewzone', ['$strap.directives']).
         link: function (scope, elem, attrs) {
         		var updateChart = function(data){
         			elem.empty();
-    				$.jqplot(attrs.id,[ data ]);
+    				$.jqplot(attrs.id,[ data ],{
+    						axes:{
+    			        	yaxis:{
+    			        			tickOptions:{
+    			        				formatString:'%.2f &nbsp;&#x2103'
+    			        			}
+    			        		}
+    						},
+    					    cursor: {
+    					    		show: true,
+    					    		zoom:true
+    					        }
+    						}
+    						);
         		}
         
         		scope.$watch(attrs.ngModel, function(newValue, oldValue) {
