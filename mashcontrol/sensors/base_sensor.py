@@ -1,19 +1,38 @@
+from threading import Thread
+import time
 
-class BaseSensor(object):
+
+class BaseSensor(Thread):
     '''
     classdocs
     '''
 
 
     def __init__(self):
-        '''
-        Constructor
-        '''
-    
-    def getTemperature(self):
+        Thread.__init__(self)
+        self.currentTemp = None
+        self.enabled = True
+
+
+    def getReading(self):
         return None
-    
-    def start(self):
-        pass;
+
+    def run(self):
+        while True:
+            if self.isEnabled():
+                self.currentTemp = self.getReading()
+
+            time.sleep(1)
+
+    #returns the current temp for the probe
+    def getCurrentTemp(self):
+        return self.currentTemp
+
+    #setter to enable this probe
+    def setEnabled(self, enabled):
+        self.enabled = enabled
+    #getter       
+    def isEnabled(self):
+        return self.enabled
     
         
