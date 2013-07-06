@@ -1,0 +1,1 @@
+from ds1820 import DS1820
