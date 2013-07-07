@@ -5,11 +5,19 @@ DEBUG = False
 
 
 #One wire ids of the DS1820 sensors, put 'None' if not connected
-from mashcontrol.sensors import DS1820
+#from mashcontrol.sensors import DS1820
+# 
+# SENSORS = {
+#            'HLT': DS1820('28-00000481da8b'),
+#            'BOIL':DS1820('28-00000481da8b'),
+#            'MASHIN':None,
+#            'MASHOUT':DS1820('28-00000481da8b')
+#            }
 
+from mashcontrol.sensors import Simulator
 SENSORS = {
-           'HLT': DS1820('28-00000481da8b'),
-           'BOIL':DS1820('28-00000481da8b'),
-           'MASHIN':None,
-           'MASHOUT':DS1820('28-00000481da8b')
-           }
+            'HLT': Simulator(),
+            'BOIL':Simulator(),
+            'MASHIN':None,
+            'MASHOUT':Simulator()
+            }

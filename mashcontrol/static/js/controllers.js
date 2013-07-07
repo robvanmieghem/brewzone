@@ -1,17 +1,18 @@
-function BrewzoneController($scope, $http) {
-
-	$scope.plotdata = [1,2,3,6,7,18,17,2,16];
+function BrewzoneController($scope, $http, $timeout) {
 	
-	$scope.changeplotdata = function(linear){
-	    if (linear){
-	        $scope.plotdata = [1,2,3,4,5,6,7,8,9];
-	    }
-	    else{
-		    $scope.plotdata = [1,2,3,6,7,18,17,2,16];
-		   }
-	}
+	$scope.updateHardwareState = function(repeatIn){
+		$http.get('../hardware').
+	  		success(function(data, status, headers, config) {
+		    	$scope.hardware = data;
+		  	}).
+		  	error(function(data, status, headers, config) {
+			  $scope.hardware = {}
+		  	});
+		$timeout($scope.updateHardwareState, repeatIn)
+	};
 	
-
+	$scope.updateHardwareState(1000);
+	
 	$scope.mashschemedata = [];
 	
 	$scope.mashscheme = {
