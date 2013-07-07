@@ -1,6 +1,6 @@
 function BrewzoneController($scope, $http, $timeout) {
 	
-	$scope.updateHardwareState = function(repeatIn){
+	$scope.updateHardwareState = function(){
 		$http.get('../hardware').
 	  		success(function(data, status, headers, config) {
 		    	$scope.hardware = data;
@@ -8,10 +8,10 @@ function BrewzoneController($scope, $http, $timeout) {
 		  	error(function(data, status, headers, config) {
 			  $scope.hardware = {}
 		  	});
-		$timeout($scope.updateHardwareState, repeatIn)
+		$timeout($scope.updateHardwareState, 1000);
 	};
 	
-	$scope.updateHardwareState(1000);
+	$scope.updateHardwareState();
 	
 	$scope.mashschemedata = [];
 	
