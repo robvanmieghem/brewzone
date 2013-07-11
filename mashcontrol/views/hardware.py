@@ -11,7 +11,7 @@ def getState():
     return {'temperature':{
                          'hlt':getSensorTemperature('HLT'),
                          'mashin':getSensorTemperature('MASHIN'),
-                         'mashout':getSensorTemperature('HLT'),
-                         'boil':getSensorTemperature('MASHOUT')
+                         'mashout':getSensorTemperature('MASHOUT'),
+                         'boil':getSensorTemperature('BOIL')
                          }
             }
