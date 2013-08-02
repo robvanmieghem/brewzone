@@ -8,10 +8,20 @@ def getState():
         if sensor:
             return sensor.getCurrentTemp()
     
+    mashheater = settings.HEATERS['MASH']
+    
     return {'temperature':{
                          'hlt':getSensorTemperature('HLT'),
                          'mashin':getSensorTemperature('MASHIN'),
                          'mashout':getSensorTemperature('MASHOUT'),
                          'boil':getSensorTemperature('BOIL')
-                         }
+                         },
+            'heaters':{
+                       'mash':{
+                               'watt':mashheater.watt,
+                               'state':mashheater.state,
+                               'frequency':mashheater.frequency,
+                               'duty_cycle':mashheater.duty_cycle
+                               }
+                       }
             }

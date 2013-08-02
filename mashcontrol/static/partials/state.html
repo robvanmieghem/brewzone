@@ -1,37 +1,80 @@
 <div class="row">
-	<div class="span3">
-		<div class="row">&nbsp;</div>
-		<div class="row">&nbsp;</div>
-		<div class="row">
-			<div class="span1">HLT</div>
-			<div class="input-append span1" width="50px">
-  				<input  class="span2 disabled" id="appendedInput" type="text" ng-model="hardware.temperature.hlt" >
-  				<span class="add-on">&#x2103</span>
+	<div class="span4">
+		<div class="hw-grouped">
+			<div class="hw-header">Temperature</div>
+			<div class="row">
+				<div class="span1">HLT</div>
+				<div class="input-append span1">
+					<input class="span1 uneditable-input" type="text"
+						ng-model="hardware.temperature.hlt"/> 
+					<span class="add-on">&#x2103</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span1">Mash out</div>
+				<div class="input-append span1">
+					<input class="span1 uneditable-input" type="text"
+						ng-model="hardware.temperature.mashout"/>
+						 <span class="add-on">&#x2103</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span1">Mash in</div>
+				<div class="input-append span1">
+					<input class="span1 uneditable-input" type="text"
+						ng-model="hardware.temperature.mashin"/> <span
+						class="add-on">&#x2103</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span1">Boil</div>
+				<div class="input-append span1">
+					<input class="span1 uneditable-input" type="text"
+						ng-model="hardware.temperature.boil"/>
+					<span class="add-on">&#x2103</span>
+				</div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="span1">Mash out</div>
-			<div class="input-append span1" width="50px">
-  				<input  class="span2 disabled" id="appendedInput" type="text" ng-model="hardware.temperature.mashout" >
-  				<span class="add-on">&#x2103</span>
+		<div class="hw-grouped">
+			<div class="hw-header" ng-model="hardware.heaters.mash.watt">Mash Heater ({{hardware.heaters.mash.watt}}&nbsp;W)</div>
+			<div class="row">
+				<div class="span1"></div>
+				<div class="span1">Actual</div>
+				<div class="span1" style="margin-left: 35px;">Desired</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="span1">Mash in</div>
-			<div class="input-append span1" width="50px">
-  				<input  class="span2 disabled" id="appendedInput" type="text" ng-model="hardware.temperature.mashin" >
-  				<span class="add-on">&#x2103</span>
+			<div class="row">
+				<div class="span1">Frequency</div>
+				<div class="span1 input-append" >
+					<input class="span1 uneditable-input" type="text" ng-model="hardware.heaters.mash.frequency"/>
+					<span class="add-on">Hz</span>
+				</div>
+				<div class="span1 input-append" style="margin-left: 35px;">
+					<input class="span1" type="text" ng-model="desiredhardwarestate.heaters.mash.frequency"/>
+					<span class="add-on">Hz</span>
+				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="span1">Boil</div>
-			<div class="input-append span1" width="50px">
-  				<input  class="span2 disabled" id="appendedInput" type="text" ng-model="hardware.temperature.boil" >
-  				<span class="add-on">&#x2103</span>
+			<div class="row">
+				<div class="span1">Duty Cycle</div>
+				<div class="span1 input-append" >
+					<input class="span1 uneditable-input" type="text" ng-model="hardware.heaters.mash.duty_cycle"/>
+					<span class="add-on">%</span>
+				</div>
+				<div class="span1 input-append" style="margin-left: 35px;">
+					<input class="span1" type="text" ng-model="desiredhardwarestate.heaters.mash.duty_cycle"/>
+					<span class="add-on">%</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="span1">State</div>
+				<div class="span1" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
+				<div class="span1 btn-group" style="margin-left: 35px;">
+    				<a class="btn" href="#"><i class="icon-play-circle"></i></a>
+    				<a class="btn" href="#"><i class="icon-off"></i></a>
+   			</div>
 			</div>
 		</div>
 	</div>
-	<div class="span9">
-		<img src="images/RimsOverview.png"/>
+	<div class="span8">
+		<img src="images/RimsOverview.png" />
 	</div>
 </div>

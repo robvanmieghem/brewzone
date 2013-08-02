@@ -10,8 +10,8 @@ DEBUG = False
 # SENSORS = {
 #            'HLT': DS1820('28-00000481da8b'),
 #            'BOIL':DS1820('28-00000481da8b'),
-#            'MASHIN':None,
-#            'MASHOUT':DS1820('28-00000481da8b')
+#            'MASHIN':DS1820('28-00000481a5f0'),
+#            'MASHOUT':DS1820('28-0000048158b6')
 #            }
 
 from mashcontrol.sensors import Simulator
@@ -21,3 +21,14 @@ SENSORS = {
             'MASHIN':None,
             'MASHOUT':Simulator()
             }
+
+
+#from mashcontrol.regulators import heater
+#HEATERS = {
+#           'MASH': heater.Heater(15)
+#           }
+
+from mashcontrol.regulators import heatersimulation
+HEATERS = {
+           'MASH': heatersimulation.HeaterSimulation(15, 2500)
+           }

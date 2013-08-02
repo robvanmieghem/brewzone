@@ -10,6 +10,7 @@ class BaseSensor(Thread):
 
     def __init__(self):
         Thread.__init__(self)
+        self.daemon = True
         self.currentTemp = None
         self.enabled = True
 
