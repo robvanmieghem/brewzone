@@ -68,11 +68,26 @@
 				<div class="span1">State</div>
 				<div class="span1" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
 				<div class="span1 btn-group" style="margin-left: 35px;">
-    				<a class="btn" href="#"><i class="icon-play-circle"></i></a>
-    				<a class="btn" href="#"><i class="icon-off"></i></a>
-   			</div>
+    				<a class="btn" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'ON'"><i class="icon-play-circle"></i></a>
+    				<a class="btn" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'"><i class="icon-off"></i></a>
+   				</div>
 			</div>
 		</div>
+		
+		
+		<div class="hw-grouped">
+			<div class="hw-header">Mash Pump</div>
+			<div class="row">
+				<div class="span1">State</div>
+				<div class="span1" ng-model="hardware.pumps.mash.state">{{hardware.pumps.mash.state}}</div>
+				<div class="span1 btn-group" style="margin-left: 35px;">
+    				<a class="btn" href="" ng-click="changePumpState('mash','ON')"><i class="icon-play-circle"></i></a>
+    				<a class="btn" href="" ng-click="changePumpState('mash','OFF')"><i class="icon-off"></i></a>
+   				</div>
+			</div>
+		</div>
+		
+		
 	</div>
 	<div class="span8">
 		<img src="images/RimsOverview.png" />

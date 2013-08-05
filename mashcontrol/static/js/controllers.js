@@ -12,6 +12,22 @@ function BrewzoneController($scope, $http, $timeout) {
 	};
 	
 	$scope.updateHardwareState();
+
+	
+	
+	$scope.desiredhardwarestate = {heaters:{mash:{frequency:0.5, duty_cycle:10, state:'OFF'}}}
+    	
+	$scope.changeHeaterState = function(heater){
+		$http.put('../hardware/heaters/'+heater,$scope.desiredhardwarestate.heaters.mash);
+	};
+	
+	$scope.$watch('desiredhardwarestate.heaters.mash',function(){
+		$scope.changeHeaterState('mash');
+	}, true);
+	
+	$scope.changePumpState = function(pump, state){
+		$http.put('../hardware/pumps/'+pump, {state:state});
+	};
 	
 	$scope.mashschemedata = [];
 	

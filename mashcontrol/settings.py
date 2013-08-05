@@ -25,10 +25,22 @@ SENSORS = {
 
 #from mashcontrol.regulators import heater
 #HEATERS = {
-#           'MASH': heater.Heater(15)
+#           'MASH': heatersimulation.HeaterSimulation(15)
 #           }
 
 from mashcontrol.regulators import heatersimulation
 HEATERS = {
-           'MASH': heatersimulation.HeaterSimulation(15, 2500)
+           'mash': heatersimulation.HeaterSimulation(15)
            }
+
+
+#from mashcontrol.regulators import pump
+#PUMPS = {
+#         'MASH': pump.Pump(18)
+#         }
+
+
+from mashcontrol.regulators import pumpsimulation
+PUMPS = {
+         'mash': pumpsimulation.PumpSimulation(18)
+         }

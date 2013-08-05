@@ -23,6 +23,8 @@ def startSensor(name):
 if __name__ == '__main__':
     startSensors()
     application.add_url_rule('/hardware', 'hardware', hardware.getState)
+    application.add_url_rule('/hardware/pumps/<pumpIdentifier>','setPumpState',hardware.setPumpState, methods=['PUT'])
+    application.add_url_rule('/hardware/heaters/<heaterIdentifier>','setHeaterState',hardware.setHeaterState, methods=['PUT'])
     
     application.debug = settings.DEBUG
     application.testing = True
