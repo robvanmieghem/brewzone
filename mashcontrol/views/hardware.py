@@ -57,7 +57,7 @@ def setHeaterState(heaterIdentifier):
     
     frequency = float(newState['frequency'])
     if (frequency != heater.frequency):
-        heater.adjust_frequency(frequency)
+        heater.change_frequency(frequency)
         
     desiredState = newState['state']
     if (desiredState != heater.state):

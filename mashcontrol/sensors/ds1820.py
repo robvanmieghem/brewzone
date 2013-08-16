@@ -16,7 +16,7 @@ class DS1820(BaseSensor):
             f = open(self.tempDir + self.sensorId + "/w1_slave", 'r')
         except IOError:
             self.currentTemp = None
-            print "Error reading " + self.tempDir + self.sensorId + "/w1_slave" ;
+            #print "Error reading " + self.tempDir + self.sensorId + "/w1_slave" ;
             return None;
 
         lines=f.readlines()

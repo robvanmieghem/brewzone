@@ -17,7 +17,7 @@ class Heater():
     def start(self):
         print 'Starting pwm on pin %s with a duty cycle of %s' % (self.pin, self.duty_cycle)
         GPIO.setup(self.pin, GPIO.OUT)
-        self.pwm = GPIO.PWM(self.pwm, self.frequency)
+        self.pwm = GPIO.PWM(self.pin, self.frequency)
         self.pwm.start(self.duty_cycle)
         self.state = 'ON'
     
