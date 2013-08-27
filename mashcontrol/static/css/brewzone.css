@@ -1,5 +1,13 @@
 @CHARSET "UTF-8";
 
+body {
+  padding-top: 70px;
+}
+
+.row {
+	margin-top: 3px;
+}
+
 /* Base class */
 .hw-grouped {
   position: relative;

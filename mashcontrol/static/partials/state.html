@@ -1,75 +1,75 @@
 <div class="row">
-	<div class="span4">
+	<div class="col-md-4">
 		<div class="hw-grouped">
 			<div class="hw-header">Temperature</div>
 			<div class="row">
-				<div class="span1">HLT</div>
-				<div class="input-append span1">
-					<input class="span1 uneditable-input" type="text"
+				<div class="col-md-4">HLT</div>
+				<div class="col-md-5 input-group">
+					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.hlt"/> 
-					<span class="add-on">&#x2103</span>
+					<span class="input-group-addon">&#x2103</span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span1">Mash out</div>
-				<div class="input-append span1">
-					<input class="span1 uneditable-input" type="text"
+				<div class="col-md-4">Mash out</div>
+				<div class="input-group col-md-5">
+					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.mashout"/>
-						 <span class="add-on">&#x2103</span>
+						 <span class="input-group-addon">&#x2103</span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span1">Mash in</div>
-				<div class="input-append span1">
-					<input class="span1 uneditable-input" type="text"
+				<div class="col-md-4">Mash in</div>
+				<div class="input-group col-md-5">
+					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.mashin"/> <span
-						class="add-on">&#x2103</span>
+						class="input-group-addon">&#x2103</span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span1">Boil</div>
-				<div class="input-append span1">
-					<input class="span1 uneditable-input" type="text"
+				<div class="col-md-4">Boil</div>
+				<div class="input-group col-md-5">
+					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.boil"/>
-					<span class="add-on">&#x2103</span>
+					<span class="input-group-addon">&#x2103</span>
 				</div>
 			</div>
 		</div>
 		<div class="hw-grouped">
 			<div class="hw-header" ng-model="hardware.heaters.mash.watt">Mash Heater ({{hardware.heaters.mash.watt}}&nbsp;W)</div>
 			<div class="row">
-				<div class="span1"></div>
-				<div class="span1">Actual</div>
-				<div class="span1" style="margin-left: 35px;">Desired</div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4">Actual</div>
+				<div class="col-md-4">Desired</div>
 			</div>
 			<div class="row">
-				<div class="span1">Frequency</div>
-				<div class="span1 input-append" >
-					<input class="span1 uneditable-input" type="text" ng-model="hardware.heaters.mash.frequency"/>
-					<span class="add-on">Hz</span>
+				<div class="col-md-4">Frequency</div>
+				<div class="col-md-4 input-group" >
+					<input class="input-sm form-control uneditable-input" type="text" ng-model="hardware.heaters.mash.frequency"/>
+					<span class="input-group-addon">Hz</span>
 				</div>
-				<div class="span1 input-append" style="margin-left: 35px;">
-					<input class="span1" type="text" ng-model="desiredhardwarestate.heaters.mash.frequency"/>
-					<span class="add-on">Hz</span>
-				</div>
-			</div>
-			<div class="row">
-				<div class="span1">Duty Cycle</div>
-				<div class="span1 input-append" >
-					<input class="span1 uneditable-input" type="text" ng-model="hardware.heaters.mash.duty_cycle"/>
-					<span class="add-on">%</span>
-				</div>
-				<div class="span1 input-append" style="margin-left: 35px;">
-					<input class="span1" type="text" ng-model="desiredhardwarestate.heaters.mash.duty_cycle"/>
-					<span class="add-on">%</span>
+				<div class="col-md-4 input-group">
+					<input class="input-sm form-control" type="text" ng-model="desiredhardwarestate.heaters.mash.frequency"/>
+					<span class="input-group-addon">Hz</span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="span1">State</div>
-				<div class="span1" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
-				<div class="span1 btn-group" style="margin-left: 35px;">
-    				<a class="btn" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'ON'"><i class="icon-play-circle"></i></a>
-    				<a class="btn" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'"><i class="icon-off"></i></a>
+				<div class="col-md-4">Duty Cycle</div>
+				<div class="col-md-4 input-group" >
+					<input class="input-sm form-control uneditable-input" type="text" ng-model="hardware.heaters.mash.duty_cycle"/>
+					<span class="input-group-addon">%</span>
+				</div>
+				<div class="col-md-4 input-group">
+					<input class="input-sm form-control" type="text" ng-model="desiredhardwarestate.heaters.mash.duty_cycle"/>
+					<span class="input-group-addon">%</span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">State</div>
+				<div class="col-md-4" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
+				<div class="col-md-4 btn-group">
+    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'ON'"><span class="glyphicon glyphicon-play-circle"></span></a>
+    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'"><span class="glyphicon glyphicon-off"></span></a>
    				</div>
 			</div>
 		</div>
@@ -78,18 +78,18 @@
 		<div class="hw-grouped">
 			<div class="hw-header">Mash Pump</div>
 			<div class="row">
-				<div class="span1">State</div>
-				<div class="span1" ng-model="hardware.pumps.mash.state">{{hardware.pumps.mash.state}}</div>
-				<div class="span1 btn-group" style="margin-left: 35px;">
-    				<a class="btn" href="" ng-click="changePumpState('mash','ON')"><i class="icon-play-circle"></i></a>
-    				<a class="btn" href="" ng-click="changePumpState('mash','OFF')"><i class="icon-off"></i></a>
+				<div class="col-md-4">State</div>
+				<div class="col-md-4" ng-model="hardware.pumps.mash.state">{{hardware.pumps.mash.state}}</div>
+				<div class="col-md-4 btn-group">
+    				<a class="btn btn-default" href="" ng-click="changePumpState('mash','ON')"><span class="glyphicon glyphicon-play-circle"></span></a>
+    				<a class="btn btn-default" href="" ng-click="changePumpState('mash','OFF')"><span class="glyphicon glyphicon-off"></span></a>
    				</div>
 			</div>
 		</div>
 		
 		
 	</div>
-	<div class="span8">
+	<div class="col-md-8" style="margin: -20px;">
 		<img src="images/RimsOverview.png" />
 	</div>
 </div>

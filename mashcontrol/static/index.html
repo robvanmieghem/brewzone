@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Bootstrap -->
-    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-   <!--  <link href="static/bootstrap/css/bootstrap-responsive.css" rel="stylesheet"/>  -->
+    <link href="lib/bootstrap-3/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+    <!-- <link href="lib/bootstrap-3/css/bootstrap-theme.css" rel="stylesheet"/> -->
    
    <link rel="stylesheet" type="text/css" href="lib/jqplot-1.0.8/jquery.jqplot.min.css" />
    
@@ -17,38 +17,34 @@
     
 </head>
 <body ng-controller="BrewzoneController">
-<div class="navbar navbar-static-top" bs-navbar>
-  <div class="navbar-inner">
-    <div class="container-fluid">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">Brewzone</a>
-      <div class="btn-group pull-right">
-        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-          <i class="icon-user"></i>
-          <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Sign Out</a></li>
-        </ul>
-      </div>
-      <div class="nav-collapse">
-              <ul class="nav">
+<!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" bs-navbar>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Brewzone</a>
+        </div>
+      <div class="navbar-collapse collapse">
+      	<ul class="nav navbar-nav">
                 <li data-match-route="/"><a href="#">Home</a></li>
                 <li data-match-route="/state.*"><a href="#state">Real time</a></li>
                 <li data-match-route="/schemes.*"><a href="#schemes">Schemes</a></li>
                 <li data-match-route="/history.*"><a href="#history">History</a></li>
                 <li data-match-route="/settings.*"><a href="#settings">Settings</a></li>
-              </ul>
+        </ul>
+      </div><!--/.nav-collapse -->
       </div>
     </div>
-  </div>
-</div>
+
+
+
+
+
+
 <div class="container">
 <div class="main">
     <div ng-view></div>
@@ -60,8 +56,8 @@
 	<script src="lib/angular-1.0.7/angular-resource.js"></script>   
   	<script src="lib/underscore-1.4.4/underscore.js"></script>
 
-	<script src="lib/bootstrap/js/bootstrap.js"></script>
-	<script src="lib/angular-strap/angular-strap.min.js"></script>
+	<script src="lib/bootstrap-3/js/bootstrap.js"></script>
+ 	<script src="lib/angular-strap/angular-strap.min.js"></script> 
 
 
 
