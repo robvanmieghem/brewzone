@@ -28,4 +28,4 @@ if __name__ == '__main__':
     
     application.debug = settings.DEBUG
     application.testing = True
-    application.run("0.0.0.0")
+    application.run("0.0.0.0", port = settings.PORT)

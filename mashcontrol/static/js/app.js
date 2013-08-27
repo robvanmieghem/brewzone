@@ -3,6 +3,7 @@ angular.module('brewzone', ['$strap.directives']).
   $routeProvider.
   	  when('/', {templateUrl: 'partials/home.html'}).
       when('/state', {templateUrl: 'partials/state.html'}).
+      when('/schemes', {templateUrl: 'partials/schemes.html'}).
       when('/history', {templateUrl: 'partials/history.html', controller: BrewzoneController}).
       when('/settings', {templateUrl: 'partials/settings.html'}).
       otherwise({redirectTo: '/'});
