@@ -1,0 +1,17 @@
+<div class="row" style="height: 100%;">
+	<div class="col-md-4" style="height: 100%;">
+		<div style="overflow: scroll; position: absolute; top: 0px; bottom: 0px;">
+	
+			<div class="list-group">
+				<a href="" 
+					class="list-group-item" 
+					ng-class="{active: recording.start==current.selectedRecording.start}" 
+					ng-click="current.selectedRecording = recording" 
+					ng-repeat="recording in recordings" 
+					style="padding-bottom: 5px; padding-top: 5px;"
+					>{{recording.start | date:'EEE, dd MMM yy HH:mm:ss'}}</a>
+			</div>
+		</div>
+	</div>
+<div class="col-md-8">blablabla</div>	
+</div>

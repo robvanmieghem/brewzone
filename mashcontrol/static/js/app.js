@@ -1,10 +1,10 @@
-angular.module('brewzone', ['$strap.directives']).
+angular.module('brewzone', ['$strap.directives', 'brewzoneServices']).
   config(['$routeProvider', function($routeProvider) {
   $routeProvider.
   	  when('/', {templateUrl: 'partials/home.html'}).
-      when('/state', {templateUrl: 'partials/state.html'}).
+      when('/state', {templateUrl: 'partials/state.html', controller: StateController}).
       when('/schemes', {templateUrl: 'partials/schemes.html'}).
-      when('/history', {templateUrl: 'partials/history.html', controller: BrewzoneController}).
+      when('/history', {templateUrl: 'partials/history.html', controller: HistoryController}).
       when('/settings', {templateUrl: 'partials/settings.html'}).
       otherwise({redirectTo: '/'});
 }]).directive('chart', function () {

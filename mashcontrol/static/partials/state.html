@@ -89,7 +89,15 @@
 		
 		
 	</div>
-	<div class="col-md-8" style="margin: -20px;">
-		<img src="images/RimsOverview.png" />
+	<div class="col-md-8" >
+		<row>
+			<div class="col-md-1 col-md-offset-11">
+				<a class="btn btn-default" ng-hide="state.recording" href="" ng-click="startRecording()"><span class="glyphicon glyphicon-record"></span></a>
+				<a class="btn btn-default" ng-hide="!state.recording" href="" ng-click="stopRecording()"><span style="color: red;" class="glyphicon glyphicon-stop"></span></a>
+			</div>
+			<div class="col-md-12" style="margin: -20px; z-index: -1;">
+				<img src="images/RimsOverview.png" />
+			</div>
+		</row>
 	</div>
 </div>

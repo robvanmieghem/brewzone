@@ -1,6 +1,6 @@
 from flask import Flask, url_for, redirect
 import settings
-from mashcontrol.views import hardware
+from mashcontrol.views import hardware, recording
 
 application = Flask(__name__)
 
@@ -25,6 +25,7 @@ if __name__ == '__main__':
     application.add_url_rule('/hardware', 'hardware', hardware.getState)
     application.add_url_rule('/hardware/pumps/<pumpIdentifier>','setPumpState',hardware.setPumpState, methods=['PUT'])
     application.add_url_rule('/hardware/heaters/<heaterIdentifier>','setHeaterState',hardware.setHeaterState, methods=['PUT'])
+    application.add_url_rule('/recordings', 'recordinglist', recording.get_recording_list)
     
     application.debug = settings.DEBUG
     application.testing = True

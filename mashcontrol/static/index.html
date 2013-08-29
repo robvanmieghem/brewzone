@@ -33,7 +33,7 @@
                 <li data-match-route="/"><a href="#">Home</a></li>
                 <li data-match-route="/state.*"><a href="#state">Real time</a></li>
                 <li data-match-route="/schemes.*"><a href="#schemes">Schemes</a></li>
-                <li data-match-route="/history.*"><a href="#history">History</a></li>
+                <li data-match-route="/history.*"><a href="#history">Recordings</a></li>
                 <li data-match-route="/settings.*"><a href="#settings">Settings</a></li>
         </ul>
       </div><!--/.nav-collapse -->
@@ -47,7 +47,7 @@
 
 <div class="container">
 <div class="main">
-    <div ng-view></div>
+    <div ng-view style="height: 100%"></div>
 </div>
 </div>
 
@@ -63,7 +63,9 @@
 
   	<script src="js/services.js"></script>
   	<script src="js/app.js"></script>
-  	<script src="js/controllers.js"></script>
+  	<script src="js/controllers/BrewzoneController.js"></script>
+  	<script src="js/controllers/StateController.js"></script>
+  	<script src="js/controllers/HistoryController.js"></script>
 	
 
 	<script type="text/javascript" src="lib/jqplot-1.0.8/jquery.jqplot.min.js"></script>

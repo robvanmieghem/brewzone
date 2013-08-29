@@ -4,6 +4,10 @@ body {
   padding-top: 70px;
 }
 
+body, html, .container, .main {
+  height: 100%;
+}
+
 .row {
 	margin-top: 3px;
 }
