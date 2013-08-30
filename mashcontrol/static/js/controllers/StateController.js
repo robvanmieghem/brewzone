@@ -1,10 +1,10 @@
-function StateController($scope){
+function StateController($scope, $http){
 	
 	$scope.startRecording = function(){
-		$scope.state.recording = true;
+			$http.put('../hardware/recorder',{recording:true});
 	};
 	
 	$scope.stopRecording = function(){
-		$scope.state.recording = false;
+		$http.put('../hardware/recorder',{recording:false});
 	};
 };

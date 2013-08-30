@@ -1,7 +1,5 @@
 function BrewzoneController($scope, $http, $timeout) {
-	
-	$scope.state = {recording:false};
-	
+		
 	$scope.updateHardwareState = function(){
 		$http.get('../hardware').
 	  		success(function(data, status, headers, config) {

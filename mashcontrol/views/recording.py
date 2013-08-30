@@ -7,9 +7,6 @@ import datetime, os
 def get_recording_list():
     recordings_list = []
     
-    now = datetime.datetime.today().replace(microsecond=0).isoformat()
-    recordings_list.append({'start':now})
-    
     directories = os.listdir(settings.RECORDINGS_DIR)
     directories.sort(reverse=True)
     for directory in directories:

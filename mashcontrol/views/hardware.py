@@ -2,6 +2,8 @@ import settings
 from flask_jigger.views import api_view, status
 from flask import request, abort
 
+recorder = None
+
 @api_view
 def getState():
     def getSensorTemperature(name):
@@ -30,7 +32,10 @@ def getState():
                      'mash':{
                              'state':mashpump.state
                              }
-                     }
+                     },
+            'recorder':{
+                        'recording':recorder.recording
+                        }
             }
 
 @api_view
@@ -45,6 +50,15 @@ def setPumpState(pumpIdentifier):
         else:
             abort(status.HTTP_400_BAD_REQUEST)
 
+@api_view
+def setRecorderState():
+    desiredState = request.get_json()['recording']
+    if (desiredState != recorder.recording):
+        if (desiredState):
+            recorder.start()
+        else:
+            recorder.stop()
+            
 
 @api_view
 def setHeaterState(heaterIdentifier):
