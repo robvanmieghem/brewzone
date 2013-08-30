@@ -9,9 +9,22 @@
 					ng-click="current.selectedRecording = recording" 
 					ng-repeat="recording in recordings" 
 					style="padding-bottom: 5px; padding-top: 5px;"
-					>{{recording.start | date:'EEE, dd MMM yy HH:mm:ss'}}</a>
+					>{{recording.start | date:'EEE, MMM dd yy HH:mm:ss'}}</a>
 			</div>
 		</div>
 	</div>
-<div class="col-md-8">blablabla</div>	
+<div class="col-md-8" ng-model="current.selectedRecording" ng-hide="!current.selectedRecording.start">
+	<div class="row">
+		<div class="col-md-10" >{{current.selectedRecording.start | date:'EEEE, MMMM d yyyy H:mm:ss'}}</div>
+		<div class="col-md-1 btn-group">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" >
+				<span class="glyphicon glyphicon-cog"></span>
+				<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="" ng-click="deleteRecording(current.selectedRecording)">Delete</a></li>
+			</ul>
+		</div>
+	</div>
+</div>	
 </div>

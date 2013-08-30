@@ -52,10 +52,12 @@ def setPumpState(pumpIdentifier):
 
 @api_view
 def setRecorderState():
-    desiredState = request.get_json()['recording']
+    request_data = request.get_json()
+    desiredState = request_data['recording']
     if (desiredState != recorder.recording):
         if (desiredState):
-            recorder.start()
+            start = request_data['start']
+            recorder.start(start)
         else:
             recorder.stop()
             

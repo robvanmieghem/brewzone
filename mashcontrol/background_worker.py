@@ -4,7 +4,7 @@ import settings
 
 class BackgroundWorker(Thread):
     '''
-    In order to prevent multiple threads, only one thread is started
+    In order to prevent multiple worker threads, only one background thread is started
     It instructs the recorder and sensors to update and times the PIControllers
     '''
 

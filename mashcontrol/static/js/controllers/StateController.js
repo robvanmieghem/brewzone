@@ -1,7 +1,8 @@
-function StateController($scope, $http){
+function StateController($scope, $http, $filter){
 	
 	$scope.startRecording = function(){
-			$http.put('../hardware/recorder',{recording:true});
+		var start = $filter('date')(new Date(), 'yyyy-MM-ddTHH:mm:ssZ');
+		$http.put('../hardware/recorder',{recording:true, start:start});
 	};
 	
 	$scope.stopRecording = function(){

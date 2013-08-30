@@ -13,6 +13,3 @@ def get_recording_list():
         recordings_list.append({'start':directory})
     
     return recordings_list
-
-def start_recording():
-    pass

@@ -16,9 +16,6 @@ class RecordingTest(unittest.TestCase):
         shutil.rmtree(self.recordings_dir)
 
 
-    def testStartRecording(self):
-        recordingview.start_recording()
-        pass
 
 
 if __name__ == "__main__":

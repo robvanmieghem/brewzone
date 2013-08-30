@@ -1,4 +1,4 @@
-import datetime
+import datetime, time
 import os
 import settings
 
@@ -8,12 +8,14 @@ class Recorder(object):
     def __init__(self):
         self.recording = False
        
-    def start(self):
-        now = datetime.datetime.today().replace(microsecond=0).isoformat()
+    def start(self, start_time):
+        now = time.time()
+        self.start_time = start_time
         
-        self.recording_dir = os.path.join(settings.RECORDINGS_DIR,now)
+        self.recording_dir = os.path.join(settings.RECORDINGS_DIR,start_time)
         os.mkdir(self.recording_dir)
         self.recording = True
+        
         
         
     def stop(self):
