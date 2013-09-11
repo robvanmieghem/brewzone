@@ -20,8 +20,8 @@ RECORDINGS_DIR = "/opt/data/brewzone/recordings"
 from mashcontrol.sensors import Simulator
 SENSORS = {
             'HLT': Simulator(),
-            'BOIL':Simulator(),
-            'MASHIN':None,
+            'BOIL':None,
+            'MASHIN':Simulator(),
             'MASHOUT':Simulator()
             }
 
@@ -47,3 +47,9 @@ from mashcontrol.regulators import pumpsimulation
 PUMPS = {
          'mash': pumpsimulation.PumpSimulation(18)
          }
+
+from mashcontrol.regulators import PIController
+
+HEATCONTROLLERS = {
+                   'mash': PIController.PIController()
+                   }

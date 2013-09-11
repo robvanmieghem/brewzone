@@ -23,10 +23,23 @@ class BackgroundWorker(Thread):
         sensor = settings.SENSORS[name]
         if sensor:
             sensor.update()
+    
+    def _regulateMashHeater(self):
+        mashController = settings.HEATCONTROLLERS['mash']
+        if not mashController.running:
+            return
         
+        inTemp = settings.SENSORS['MASHOUT'].getCurrentTemp()
+        outTemp = settings.SENSORS['MASHIN'].getCurrentTemp()
+        newDutyCycle = mashController.get_control_value(inTemp, outTemp)
+        
+        mashHeater = settings.HEATERS['mash']
+        mashHeater.change_duty_cycle(newDutyCycle)
+    
     def run(self):
         while True:
             self._updateSensors()
             self.recorder.update()
+            self._regulateMashHeater()
 
             time.sleep(1)

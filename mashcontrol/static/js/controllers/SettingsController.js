@@ -1,0 +1,3 @@
+function SettingsController($scope, $http){
+	
+};

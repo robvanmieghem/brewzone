@@ -4,7 +4,7 @@
 			<div class="hw-header">Temperature</div>
 			<div class="row">
 				<div class="col-md-4">HLT</div>
-				<div class="col-md-5 input-group">
+				<div class="col-md-4 input-group">
 					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.hlt"/> 
 					<span class="input-group-addon">&#x2103</span>
@@ -12,7 +12,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-4">Mash out</div>
-				<div class="input-group col-md-5">
+				<div class="input-group col-md-4">
 					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.mashout"/>
 						 <span class="input-group-addon">&#x2103</span>
@@ -20,15 +20,20 @@
 			</div>
 			<div class="row">
 				<div class="col-md-4">Mash in</div>
-				<div class="input-group col-md-5">
+				<div class="input-group col-md-4">
 					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.mashin"/> <span
+						class="input-group-addon">&#x2103</span>
+				</div>
+				<div class="input-group col-md-4">
+					<input class="input-sm form-control" type="text"
+						ng-model="desiredhardwarestate.heaters.mash.targetTemperature"/> <span
 						class="input-group-addon">&#x2103</span>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4">Boil</div>
-				<div class="input-group col-md-5">
+				<div class="input-group col-md-4">
 					<input class="input-sm form-control uneditable-input" type="text"
 						ng-model="hardware.temperature.boil"/>
 					<span class="input-group-addon">&#x2103</span>
@@ -36,22 +41,11 @@
 			</div>
 		</div>
 		<div class="hw-grouped">
-			<div class="hw-header" ng-model="hardware.heaters.mash.watt">Mash Heater ({{hardware.heaters.mash.watt}}&nbsp;W)</div>
+			<div class="hw-header" ng-model="hardware.heaters.mash.watt">Mash Heater</div>
 			<div class="row">
 				<div class="col-md-4"></div>
 				<div class="col-md-4">Actual</div>
 				<div class="col-md-4">Desired</div>
-			</div>
-			<div class="row">
-				<div class="col-md-4">Frequency</div>
-				<div class="col-md-4 input-group" >
-					<input class="input-sm form-control uneditable-input" type="text" ng-model="hardware.heaters.mash.frequency"/>
-					<span class="input-group-addon">Hz</span>
-				</div>
-				<div class="col-md-4 input-group">
-					<input class="input-sm form-control" type="text" ng-model="desiredhardwarestate.heaters.mash.frequency"/>
-					<span class="input-group-addon">Hz</span>
-				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-4">Duty Cycle</div>
@@ -66,10 +60,11 @@
 			</div>
 			<div class="row">
 				<div class="col-md-4">State</div>
-				<div class="col-md-4" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
-				<div class="col-md-4 btn-group">
+				<div class="col-md-2" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
+				<div class="col-md-6 btn-group">
     				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'ON'"><span class="glyphicon glyphicon-play-circle"></span></a>
-    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'"><span class="glyphicon glyphicon-off"></span></a>
+    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'AUTO'"><span class="glyphicon glyphicon-repeat"></span></a>
+   					<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'"><span class="glyphicon glyphicon-off"></span></a>
    				</div>
 			</div>
 		</div>

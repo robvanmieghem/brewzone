@@ -12,6 +12,7 @@ def getState():
             return sensor.getCurrentTemp()
     
     mashheater = settings.HEATERS['mash']
+    mashcontroller = settings.HEATCONTROLLERS['mash']
     mashpump = settings.PUMPS['mash']
     
     return {'temperature':{
@@ -25,7 +26,8 @@ def getState():
                                'watt':mashheater.watt,
                                'state':mashheater.state,
                                'frequency':mashheater.frequency,
-                               'duty_cycle':mashheater.duty_cycle
+                               'duty_cycle':mashheater.duty_cycle,
+                               'targetTemperature':mashcontroller.targetTemperature
                                }
                        },
             'pumps':{
@@ -65,21 +67,33 @@ def setRecorderState():
 @api_view
 def setHeaterState(heaterIdentifier):
     heater = settings.HEATERS[heaterIdentifier]
+    controller = settings.HEATCONTROLLERS[heaterIdentifier]
     newState = request.get_json();
     
-    duty_cycle = float(newState['duty_cycle'])
-    if (duty_cycle != heater.duty_cycle):
-        heater.change_duty_cycle(duty_cycle)
+    if newState.has_key('duty_cycle'):
+        duty_cycle = float(newState['duty_cycle'])
+        if (duty_cycle != heater.duty_cycle):
+            heater.change_duty_cycle(duty_cycle)
     
-    frequency = float(newState['frequency'])
-    if (frequency != heater.frequency):
-        heater.change_frequency(frequency)
+    if newState.has_key('frequency'):
+        frequency = float(newState['frequency'])
+        if (frequency != heater.frequency):
+            heater.change_frequency(frequency)
         
-    desiredState = newState['state']
-    if (desiredState != heater.state):
-        if (desiredState == 'ON'):
-            heater.start()
-        elif (desiredState == 'OFF'):
-            heater.stop()
-        else:
-            abort(status.HTTP_400_BAD_REQUEST)
+    if newState.has_key('state'):
+        desiredState = newState['state']
+        if (desiredState != heater.state):
+            if (desiredState == 'ON'):
+                heater.start()
+                controller.stop()
+            elif (desiredState == 'OFF'):
+                heater.stop()
+                controller.stop()
+            elif (desiredState == 'AUTO'):
+                heater.start()
+                controller.start()
+            else:
+                abort(status.HTTP_400_BAD_REQUEST)
+                
+    if newState.has_key('targetTemperature'):
+        controller.targetTemperature = float(newState['targetTemperature'])
