@@ -13,7 +13,7 @@ class Recorder(object):
         self.start_time = start_time
         
         self.recording_dir = os.path.join(settings.RECORDINGS_DIR,start_time)
-        os.mkdir(self.recording_dir)
+        os.makedirs(self.recording_dir)
         self.recording = True
         
         

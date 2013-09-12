@@ -1,5 +1,5 @@
 from threading import Thread
-import time
+import time, sys
 import settings
 
 class BackgroundWorker(Thread):
@@ -38,8 +38,11 @@ class BackgroundWorker(Thread):
     
     def run(self):
         while True:
-            self._updateSensors()
-            self.recorder.update()
-            self._regulateMashHeater()
+            try:
+                self._updateSensors()
+                self.recorder.update()
+                self._regulateMashHeater()
 
-            time.sleep(1)
+                time.sleep(1)
+            except:
+                sys.stderr.write(str(sys.exc_info()[0]))

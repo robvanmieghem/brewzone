@@ -62,9 +62,9 @@
 				<div class="col-md-4">State</div>
 				<div class="col-md-2" ng-model="hardware.heaters.mash.state">{{hardware.heaters.mash.state}}</div>
 				<div class="col-md-6 btn-group">
-    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'ON'"><span class="glyphicon glyphicon-play-circle"></span></a>
-    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'AUTO'"><span class="glyphicon glyphicon-repeat"></span></a>
-   					<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'"><span class="glyphicon glyphicon-off"></span></a>
+    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'ON'" title="Start"><span class="glyphicon glyphicon-play-circle"></span></a>
+    				<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'AUTO'" title="Auto adjust"><span class="glyphicon glyphicon-repeat"></span></a>
+   					<a class="btn btn-default" href="" ng-click="desiredhardwarestate.heaters.mash.state = 'OFF'" title="Stop"><span class="glyphicon glyphicon-off"></span></a>
    				</div>
 			</div>
 		</div>
@@ -76,8 +76,8 @@
 				<div class="col-md-4">State</div>
 				<div class="col-md-4" ng-model="hardware.pumps.mash.state">{{hardware.pumps.mash.state}}</div>
 				<div class="col-md-4 btn-group">
-    				<a class="btn btn-default" href="" ng-click="changePumpState('mash','ON')"><span class="glyphicon glyphicon-play-circle"></span></a>
-    				<a class="btn btn-default" href="" ng-click="changePumpState('mash','OFF')"><span class="glyphicon glyphicon-off"></span></a>
+    				<a class="btn btn-default" href="" ng-click="changePumpState('mash','ON')" title="Start"><span class="glyphicon glyphicon-play-circle"></span></a>
+    				<a class="btn btn-default" href="" ng-click="changePumpState('mash','OFF')" title="Stop"><span class="glyphicon glyphicon-off"></span></a>
    				</div>
 			</div>
 		</div>

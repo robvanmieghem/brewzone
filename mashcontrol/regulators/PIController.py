@@ -5,7 +5,7 @@ class PIController:
     Windup is avoided as the feedback is limited over both the Process and feedforward change
     '''
     
-    def __init__(self, K=0.7, Tr=25.0, max_output=100, min_output= 0, maxTempChange=6.5):
+    def __init__(self, K=0.7, Tr=20.0, max_output=100, min_output= 0, maxTempChange=6.5):
         """ 
         @param K: Gain
         @param Tr: Reset time in repeats per minute
@@ -37,8 +37,18 @@ class PIController:
 
     def get_feedforward(self, inTemp):
         if inTemp is None:
-            return 0
-        return ((self.targetTemperature - inTemp)/self._maxTempChange)*100
+            return self._last_feedforward
+        temperatureDifference = self.targetTemperature - inTemp
+        #Limit the feedforward difference to the maximum achievable
+        #    This prevents the feedforward factor from taking up too much of the result
+        #    If this is not done, the process correction might not catch up the drop in feedforward when 
+        #    the temperature rises
+        limitedTemperatureDifference = min(temperatureDifference, self._maxTempChange)
+        
+        #Negative feedforward is not possible in this setup, let the process and integral handle this
+        limitedTemperatureDifference = max(0, limitedTemperatureDifference)
+        
+        return (limitedTemperatureDifference/self._maxTempChange)*100
 
     def get_control_value(self, inTemp, outTemp):
         """
@@ -47,7 +57,7 @@ class PIController:
         @param error: The error between the predefined value and the measured value
         @param feedforward: The Calculated outputvalue from the feedforward control
         
-        @return: The control signal  
+        @return: The control signal
         """
         
         error = self.get_error(outTemp)
