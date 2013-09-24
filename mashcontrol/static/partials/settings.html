@@ -31,5 +31,16 @@
 			
 	</div>
 
+	<div class="hw-grouped">
+		<div class="hw-header">Recorder</div>
+	</div>
+	<div class="hw-grouped">
+		<div class="hw-header">Raspberry PI</div>
+		<a href="" class="btn btn-default" ng-click="UpdateRPiInfo()">Get hardware info</a>
+		<div ng-model="raspberrypi.hwinfo">
+		<div style="font-family: monospace; white-space: pre">{{raspberrypi.hwinfo.diskusage}}</div>
+		<div>Load [1, 5 and 15 minutes]: {{raspberrypi.hwinfo.loadavg}}</div> 
+		</div>	
+	</div>
 
 </div>

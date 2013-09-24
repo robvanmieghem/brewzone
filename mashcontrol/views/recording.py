@@ -1,7 +1,9 @@
 import settings
 from flask_jigger.views import api_view, status
 from flask import request, abort
-import datetime, os
+import os, shutil
+
+#TODO: check with the abspath and commonprefix if no directory traversal is going on
 
 @api_view
 def get_recording_list():
@@ -13,3 +15,12 @@ def get_recording_list():
         recordings_list.append({'start':directory})
     
     return recordings_list
+
+@api_view
+def delete_recording(recording_id):
+    
+    shutil.rmtree(os.path.join(settings.RECORDINGS_DIR, recording_id))
+
+@api_view
+def recording_details(recording_id):
+    return {'start':recording_id}

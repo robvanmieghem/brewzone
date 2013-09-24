@@ -1,6 +1,7 @@
 import settings
 from flask_jigger.views import api_view, status
 from flask import request, abort
+import subprocess, os
 
 recorder = None
 
@@ -39,6 +40,14 @@ def getState():
                         'recording':recorder.recording
                         }
             }
+
+@api_view
+def getPiState():
+    proc = subprocess.Popen(['df','-h'], stdout=subprocess.PIPE)
+    diskusage = proc.stdout.read()
+    return {'diskusage':diskusage,
+     'loadavg':os.getloadavg()}
+    
 
 @api_view
 def setPumpState(pumpIdentifier):

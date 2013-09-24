@@ -17,10 +17,13 @@ if __name__ == '__main__':
     worker.start()
     hardware.recorder = recorder
     application.add_url_rule('/hardware', 'hardware', hardware.getState)
+    application.add_url_rule('/hardware/pi', 'pihardware', hardware.getPiState)
     application.add_url_rule('/hardware/pumps/<pumpIdentifier>','setPumpState',hardware.setPumpState, methods=['PUT'])
     application.add_url_rule('/hardware/heaters/<heaterIdentifier>','setHeaterState',hardware.setHeaterState, methods=['PUT'])
     application.add_url_rule('/hardware/recorder','setRecorderState', hardware.setRecorderState, methods=['PUT'])
     application.add_url_rule('/recordings', 'recordinglist', recording.get_recording_list)
+    application.add_url_rule('/recordings/<recording_id>','recordingdetail', recording.recording_details, methods=['GET'])
+    application.add_url_rule('/recordings/<recording_id>','deleterecording',recording.delete_recording, methods=['DELETE'])
     
     application.debug = settings.DEBUG
     application.testing = True

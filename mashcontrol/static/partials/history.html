@@ -6,7 +6,7 @@
 				<a href="" 
 					class="list-group-item" 
 					ng-class="{active: recording.start==current.selectedRecording.start}" 
-					ng-click="current.selectedRecording = recording" 
+					ng-click="selectRecording(recording)" 
 					ng-repeat="recording in recordings" 
 					style="padding-bottom: 5px; padding-top: 5px;"
 					>{{recording.start | date:'EEE, MMM dd yy HH:mm:ss'}}</a>
@@ -25,6 +25,9 @@
 				<li><a href="" ng-click="deleteRecording(current.selectedRecording)">Delete</a></li>
 			</ul>
 		</div>
+	</div>
+	<div class="row">
+	
 	</div>
 </div>	
 </div>
