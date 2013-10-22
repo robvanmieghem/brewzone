@@ -1,13 +1,4 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Brewzone tools</title>
-</head>
-<body>
-
-</body>
-</html<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en" ng-app="brewzone">
 <head>
 	<title>Brewzone Tools</title>
@@ -17,9 +8,10 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 
+   <link rel="stylesheet" type="text/css" href="lib/jqplot-1.0.8/jquery.jqplot.min.css" />
     <link rel="stylesheet" type="text/css" href="css/brewzone.css"/>
 </head>
-<body ng-controller="BrewzoneController">
+<body>
 <!-- Fixed navbar -->
     <div class="navbar navbar-default navbar-fixed-top" bs-navbar>
       <div class="container">
@@ -46,17 +38,421 @@
 
 <div class="container">
 <div class="main">
-    <div ng-view style="height: 100%"></div>
+    <div style="height: 100%" ng-controller="primingController">
+    	<div class="row">
+			<div class="col-md-6">
+				<div class="row hw-grouped">
+					<div class="hw-header">Relationship added Sugar and CO2</div>
+					
+					
+					<div class="row">
+						<div class="form-group">
+    						<label class="col-lg-7 control-label">Secondary fermentation temperature in &#x2103: </label>
+    						<div class="col-lg-2">
+								<select class="form-control input-sm" ng-model="selectedTemperature" ng-change="updatedSaturation()">
+  									<option>0</option>
+  									<option>1</option>
+  									<option>2</option>
+  									<option>3</option>
+  									<option>4</option>
+  									<option>5</option>
+  									<option>6</option>
+  									<option>7</option>
+  									<option>8</option>
+  									<option>9</option>
+  									<option>10</option>
+  									<option>11</option>
+  									<option>12</option>
+  									<option>13</option>
+  									<option>14</option>
+  									<option>15</option>
+  									<option>16</option>
+  									<option>17</option>
+  									<option>18</option>
+  									<option>19</option>
+  									<option>20</option>
+  									<option>21</option>
+  									<option>22</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<br/>
+					<div class="row">
+						<div id="co2forsugarchart" data-chart ng-model="co2forSugarTable" ></div>
+					</div>
+					<br/>
+					<div class="row">
+						<div class="form-group">
+    						<label class="col-lg-4 control-label">Saturation:</label>
+    						<div class="col-lg-3 input-group">
+								<input class="form-control input-sm" ng-model="saturationGramLiter" ng-change="updatedSaturation()"/>
+								<span class="input-group-addon">g/L</span>
+							</div>
+    					</div>
+					</div>
+					<div class="row">
+						<div class="form-group">
+    						<label class="col-lg-4 control-label">Sugar:</label>
+    						<div class="col-lg-3 input-group">
+								<input class="form-control input-sm" ng-model="sugarGramLiter" ng-change="updatedSugarGramLiter()"/>
+								<span class="input-group-addon">g/L</span>
+							</div>
+    					</div>
+					</div>
+					<div class="row">
+					
+					
+					
+					
+						<div class="form-group">
+    						<div class="col-lg-4">
+								<select class="form-control input-sm" ng-model="bottlingvessel">
+  									<option value="bucket">Bottling bucket</option>
+  									<option value="bottle">Bottles</option>
+  								</select>
+  							</div>
+    						<div class="col-lg-3" ng-show="bottlingvessel=='bottle'">
+								<select class="form-control input-sm" ng-model="bottlesize" ng-change="updatedBottleSize()">
+  									<option value="0.25">25 cl</option>
+  									<option value="0.33">33 cl</option>
+  									<option value="0.75">75 cl</option>
+  								</select>
+  							</div>
+    						<div class="col-lg-3 input-group" ng-show="bottlingvessel=='bottle'">
+								<input class="form-control input-sm" ng-model="sugarPerBottle" ng-change="updatedSugarPerBottle()"/>
+								<span class="input-group-addon">&nbsp;g&nbsp;</span>
+							</div>
+    						<div class="col-lg-3 input-group" ng-show="bottlingvessel=='bucket'">
+								<input class="form-control input-sm" ng-model="bucketsize" ng-change="updatedBucketSize()"/>
+								<span class="input-group-addon">&nbsp;L&nbsp;&nbsp;</span>
+							</div>
+    						<div class="col-lg-3 input-group" ng-show="bottlingvessel=='bucket'">
+								<input class="form-control input-sm" ng-model="sugarGramTotal" ng-change="updatedSugarGramTotal()"/>
+								<span class="input-group-addon">&nbsp;g&nbsp;</span>
+							</div>
+    					</div>
+					</div>
+				</div>
+			</div>
+			
+			
+			
+  			<div class="col-md-6">
+  				<div class="hw-grouped">
+					<div class="hw-header">Reference (CO2 in g/L)</div>
+					<div class="row">
+					
+					<table  WIDTH="100%" class="table .table-bordered " >
+<tr>
+<td VALIGN=TOP WIDTH="20%"><b>Type</b></td>
+
+<td VALIGN=TOP WIDTH="20%"><b>Baetsl&eacute;</b></td>
+
+<td VALIGN=TOP WIDTH="20%"><b>Dapper/Hibber</b></td>
+
+<td VALIGN=TOP WIDTH="20%"><b>Walsh/Bertens</b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP COLSPAN="5"><b>Per biersoort</b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">ondergegist bier</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 4,9</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">bovengegist bier</td>
+
+<td VALIGN=TOP WIDTH="20%">6,0 - 8,0</td>
+
+<td VALIGN=TOP WIDTH="20%">3,8 - 4,8</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 7,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">bier met hergisting op de fles&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">7,0 - 9,0</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,5 - 7,5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">vatenbier</td>
+
+<td VALIGN=TOP WIDTH="20%">4,6 - 4,8</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP COLSPAN="5"><b>Per land</b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Amerikaanse bieren</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,4 - 5,4</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Belgische bieren</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">3,8 - 4,8</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 8,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Duitse bieren</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 7,5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Engelse ales</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">3,0 - 4,0</td>
+
+<td VALIGN=TOP WIDTH="20%">3,8 - 4,7</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Nederlandse bieren</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 7,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP COLSPAN="5"><b>Per biertype</b></td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">alt</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,3 - 4,9</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">barley wine</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 4,5</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Belgische pale ale (Palm e.d.)</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">3,8 - 4,8</td>
+
+<td VALIGN=TOP WIDTH="20%">4,2 - 5,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">bokbier</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,1 - 4,6</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">dobbelbok</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,4 - 4,8</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">dubbel</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">5,8 - 6,6</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">Engelse pale ale</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">3,0 - 4,0</td>
+
+<td VALIGN=TOP WIDTH="20%">3,5 - 5,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">fruit lambiek</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">6,0 - 9,0</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">lambiek</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,8 - 5,6</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">meibok</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 5,2</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">pils</td>
+
+<td VALIGN=TOP WIDTH="20%">5,0 - 5,5</td>
+
+<td VALIGN=TOP WIDTH="20%">4,4 - 5,4</td>
+
+<td VALIGN=TOP WIDTH="20%">4,2 - 5,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">porter, stout</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">3,4 - 4,6</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 4,6</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">scotch ale</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,5 - 5,3</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">tarwebier</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,7 - 5,6</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">tripel</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">5,8 - 7,4</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">weizen</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">6,6 - 9,0</td>
+
+<td VALIGN=TOP WIDTH="20%">6,0 - 7,0</td>
+</tr>
+
+<tr>
+<td VALIGN=TOP WIDTH="20%">winterbier</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">&nbsp;</td>
+
+<td VALIGN=TOP WIDTH="20%">4,0 - 7,0</td>
+</tr>
+
+
+</table>
+					
+					
+					
+					
+					
+					</div>
+				</div>
+    	</div>
+    </div>
 </div>
 </div>
 
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.3/angular.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 	
 
+
+	<script type="text/javascript" src="lib/jqplot-1.0.8/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="lib/jqplot-1.0.8/plugins/jqplot.cursor.min.js"></script>
+	<script type="text/javascript" src="lib/jqplot-1.0.8/plugins/jqplot.canvasTextRenderer.min.js"></script>
+	<script type="text/javascript" src="lib/jqplot-1.0.8/plugins/jqplot.canvasAxisLabelRenderer.min.js"></script>
 	
-	
+	<script src="js/controllers/primingcontroller.js"></script>
+	<script src="js/app.js"></script>
 </body>
 </html>
->
